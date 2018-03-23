@@ -9,19 +9,19 @@
         </div>
     </md-list-item>
     <md-list-item class="md-2-line"
-                  ng-repeat="comment in comments">
+                  ng-repeat="document in vm.documents">
         <div class="md-list-item-text"
              layout="row"
              layout-align="start center">
-            <span flex>{{comment.id}}</span>
-            <span flex>{{comment.name}}</span>
-            <span flex>{{comment.email}}</span>
+            <span flex>{{document.id}}</span>
+            <span flex>{{document.name}}</span>
+            <span flex>{{document.email}}</span>
         </div>
     </md-list-item>
 </md-list>
 
-<nr-pagination options="paginationOptions"
+<!-- <nr-pagination options="paginationOptions"
                get-count="getCount()"
                on-page-change="onPageChange(options)"
                on-limit-change="onLimitChange(limit)">
-</nr-pagination>
+</nr-pagination> -->
