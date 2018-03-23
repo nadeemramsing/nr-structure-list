@@ -32,32 +32,7 @@
         -->
     </md-input-container>
 
-    <md-list>
-        <md-list-item class="md-2-line">
-            <div class="md-list-item-text"
-                 layout="row"
-                 layout-align="start center">
-                <span flex>ID</span>
-                <span flex>NAME</span>
-                <span flex>EMAIL</span>
-            </div>
-        </md-list-item>
-        <md-list-item class="md-2-line"
-                      ng-repeat="comment in comments">
-            <div class="md-list-item-text"
-                 layout="row"
-                 layout-align="start center">
-                <span flex>{{comment.id}}</span>
-                <span flex>{{comment.name}}</span>
-                <span flex>{{comment.email}}</span>
-            </div>
-        </md-list-item>
-    </md-list>
-
-    <pagination options="paginationOptions"
-                get-count="getCount()"
-                on-page-change="onPageChange(options)"
-                on-limit-change="onLimitChange(limit)"></pagination>
+    <nr-structure-list></nr-structure-list>
 </body>
 
 <script src="vendor.js?v=@version@"></script>

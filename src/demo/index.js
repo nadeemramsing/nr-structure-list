@@ -5,7 +5,7 @@
     angular
         .module('Demo', [
             'ngMaterial',
-            'NrAngularPagination'
+            'NrStructureList'
         ])
         .controller('DemoController', DemoController);
 
