@@ -1,0 +1,66 @@
+<html ng-app="Demo"
+      ng-controller="DemoController">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>Demo</title>
+
+    <link rel="stylesheet"
+          type="text/css"
+          href="vendor.css?v=@version@">
+</head>
+
+<body ui-view
+      layout="column"
+      ng-cloak>
+
+    <md-input-container ng-model-options="{'updateOn': 'default blur','debounce': {'default': 1000,'blur': 0}}">
+        <label>Search</label>
+        <input ng-model="paginationOptions.searchText"
+               ng-model-options="{'*': '$inherit','debounce': {'default': 0}}"
+               ng-change="searchComments()">
+        <!-- 
+            updateOn: when to run $digest/check for change; default events = paste, input, ...
+            debounce: no. of ms after which $digest is ran; can be specified for each event
+            Here,  on blur, $digest ran after 0 ms.
+
+            Inheritance:
+            ng-model-options is always inherited from parent
+            *: $inherit => inherits all properties; can then overwrite/add new properties
+        -->
+    </md-input-container>
+
+    <md-list>
+        <md-list-item class="md-2-line">
+            <div class="md-list-item-text"
+                 layout="row"
+                 layout-align="start center">
+                <span flex>ID</span>
+                <span flex>NAME</span>
+                <span flex>EMAIL</span>
+            </div>
+        </md-list-item>
+        <md-list-item class="md-2-line"
+                      ng-repeat="comment in comments">
+            <div class="md-list-item-text"
+                 layout="row"
+                 layout-align="start center">
+                <span flex>{{comment.id}}</span>
+                <span flex>{{comment.name}}</span>
+                <span flex>{{comment.email}}</span>
+            </div>
+        </md-list-item>
+    </md-list>
+
+    <pagination options="paginationOptions"
+                get-count="getCount()"
+                on-page-change="onPageChange(options)"
+                on-limit-change="onLimitChange(limit)"></pagination>
+</body>
+
+<script src="vendor.js?v=@version@"></script>
+<script src="all.js?v=@version@"></script>
+
+</html>

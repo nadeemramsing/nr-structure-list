@@ -1,0 +1,20 @@
+{
+  "name": "nr-structure-list",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Nadeem Ramsing <nadeem.ramsing@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/nadeemramsing/nr-structure-list",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "nr-angular-pagination": "^0.0.1"
+  }
+}
