@@ -27,12 +27,22 @@
         $scope.searchComments = searchComments;
 
         /* INIT */
-        getComments({ limit: $scope.paginationOptions.query.limit })
-            .then(function (response) {
-                $scope.comments = response.data;
-            });
+        init();
 
         /* FUNCTION DECLARATIONS */
+        function init() {
+            var promises = {};
+
+            promises.comments = getComments({ limit: $scope.paginationOptions.query.limit });
+            promises.fields = getCommentsFields();
+
+            $q.all(promises).then(function (responses) {
+                _.each(responses, function (response, key) {
+                    $scope[key] = response.data;
+                });
+            });
+        }
+
         function onLimitChange(limit) {
             console.log("onLimitChange, limit = " + limit);
         }
@@ -77,6 +87,13 @@
         function getComments(query) {
             var qs = qs = $httpParamSerializer(query),
                 url = BASEURL + '?' + qs;
+
+            return $http.get(url);
+        }
+
+        function getCommentsFields(query) {
+            var qs = qs = $httpParamSerializer(query),
+                url = BASEURL + '/fields' + '?' + qs;
 
             return $http.get(url);
         }

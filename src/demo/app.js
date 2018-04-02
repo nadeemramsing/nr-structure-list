@@ -3538,6 +3538,15 @@ app.get('/api/comments', (req, res) => {
     );
 });
 
+app.get('/api/comments/fields', (req, res) => {
+    var fields = _.map(data[0], (v, k) => Object({
+        field: k,
+        label: k.toLocaleUpperCase()
+    }));
+
+    res.send(fields);
+});
+
 app.get('/api/comments/count', (req, res) => {
     var text = RegExp(req.query.searchText, 'i'),
         result = _.filter(data, comment => comment.name.match(text) || comment.email.match(text) || comment.body.match(text));
