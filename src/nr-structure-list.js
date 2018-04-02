@@ -6,7 +6,8 @@
         .module('NrStructureList', ['NrAngularPagination'])
         .component('nrStructureList', {
             bindings: {
-                documents: '='
+                documents: '<',
+                columns: '<'
             },
             templateUrl: 'tpl/nr-structure-list.html',
             controller: StructureListController,
@@ -17,7 +18,7 @@
         var vm = this;
 
         this.$onInit = function () {
-
+            
         }
     }
 

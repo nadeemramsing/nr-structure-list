@@ -1,21 +1,12 @@
 <md-list>
     <md-list-item class="md-2-line">
-        <div class="md-list-item-text"
-             layout="row"
-             layout-align="start center">
-            <span flex>ID</span>
-            <span flex>NAME</span>
-            <span flex>EMAIL</span>
+        <div class="md-list-item-text" layout="row" layout-align="start center">
+            <span ng-repeat="column in vm.columns" flex>{{column.label}}</span>
         </div>
     </md-list-item>
-    <md-list-item class="md-2-line"
-                  ng-repeat="document in vm.documents">
-        <div class="md-list-item-text"
-             layout="row"
-             layout-align="start center">
-            <span flex>{{document.id}}</span>
-            <span flex>{{document.name}}</span>
-            <span flex>{{document.email}}</span>
+    <md-list-item class="md-2-line" ng-repeat="document in vm.documents">
+        <div class="md-list-item-text" layout="row" layout-align="start center">
+            <span ng-repeat="column in vm.columns" flex>{{document[column.field]}}</span>
         </div>
     </md-list-item>
 </md-list>
