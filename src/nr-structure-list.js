@@ -7,7 +7,8 @@
         .component('nrStructureList', {
             bindings: {
                 documents: '<',
-                columns: '<'
+                columns: '<',
+                onColumnClick: '&'
             },
             templateUrl: 'tpl/nr-structure-list.html',
             controller: StructureListController,

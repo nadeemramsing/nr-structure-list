@@ -32,7 +32,7 @@
         -->
     </md-input-container>
 
-    <nr-structure-list documents="comments" columns="fields">
+    <nr-structure-list documents="comments" columns="fields" on-column-click="onColumnClick(column)">
     </nr-structure-list>
 
     <nr-pagination options="paginationOptions"

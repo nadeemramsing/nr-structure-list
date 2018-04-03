@@ -21,6 +21,7 @@
         $scope.comments = [];
 
         $scope.getCount = getCommentsCount;
+        $scope.onColumnClick = onColumnClick;
         $scope.onLimitChange = onLimitChange;
         $scope.onPageChange = onPageChange;
 
@@ -43,8 +44,12 @@
             });
         }
 
+        function onColumnClick(column) {
+            console.log("onColumnClick, column = ", column);
+        }
+
         function onLimitChange(limit) {
-            console.log("onLimitChange, limit = " + limit);
+            console.log("onLimitChange, limit = ", limit);
         }
 
         function onPageChange(options) {

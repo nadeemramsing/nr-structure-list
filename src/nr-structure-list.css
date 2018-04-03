@@ -2,6 +2,6 @@
     opacity: 0.5;
 }
 
-.drop-down-icon {
+.drop-down-icon, .columns-filter-icon {
     background-color: grey
 } 
