@@ -1,7 +1,18 @@
-.test {
+#nr-structure-list .test {
     opacity: 0.5;
 }
 
-.columns-filter-icon {
+#nr-structure-list .columns-filter-icon {
     background-color: grey
 } 
+
+#nr-structure-list .header {
+    background-color: #212E3B;
+    color: #f3f3f3;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#nr-structure-list .row:nth-child(odd) {
+    background-color: #E5EAEB;
+}
