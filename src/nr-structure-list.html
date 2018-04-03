@@ -3,7 +3,7 @@
         <img class="columns-filter-icon" src="assets/icons/drop.svg" height="25" width="25">
     </div>
     <md-menu-content width="4">
-        <md-menu-item ng-repeat="column in vm.columns" ng-init="column.isSelected = true">
+        <md-menu-item ng-repeat="column in vm.columns">
             <md-button ng-click="column.isSelected = !column.isSelected; vm.onColumnClick({column: column})" md-prevent-menu-close>
                 <md-checkbox ng-checked="column.isSelected" md-prevent-menu-close>{{column.label}}</md-checkbox>
             </md-button>

@@ -12,8 +12,7 @@
     /* @ngInject */
     function DemoController($scope, $http, $httpParamSerializer, $q) {
 
-        var BASEURL = 'http://localhost:4000/api/comments';
-
+        /* BINDED VAR */
         $scope.paginationOptions = {
             'query': { skip: 0, limit: 5 },
             'searchText': ''
@@ -26,6 +25,15 @@
         $scope.onPageChange = onPageChange;
 
         $scope.searchComments = searchComments;
+
+        /* LOCAL VAR */
+        var BASEURL = 'http://localhost:4000/api/comments',
+            defaultColumns = [
+                'id',
+                'name',
+                'email',
+                'body'
+            ];
 
         /* INIT */
         init();
@@ -40,6 +48,18 @@
             $q.all(promises).then(function (responses) {
                 _.each(responses, function (response, key) {
                     $scope[key] = response.data;
+                });
+
+                $scope.fields = initColumns($scope.fields);
+            });
+        }
+
+        function initColumns(columns) {
+            columns = _.cloneDeep(columns);
+
+            return columns.map(function(column) {
+                return Object.assign(column, {
+                    isSelected: defaultColumns.includes(column.field)
                 });
             });
         }
