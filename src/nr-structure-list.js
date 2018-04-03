@@ -15,7 +15,7 @@
             controllerAs: 'vm'
         });
 
-    function StructureListController($scope, $http, $httpParamSerializer, $q) {
+    function StructureListController() {
         var vm = this;
 
         this.$onInit = function () {
