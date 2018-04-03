@@ -8,6 +8,7 @@ var
     gulp = require('gulp'),
     gulpif = require('gulp-if'),
     htmlmin = require('gulp-htmlmin'),
+    injectSvg = require('gulp-inject-svg'),
     ngAnnotate = require('gulp-ng-annotate'),
     path = require('path'),
     runSequence = require('run-sequence'),
@@ -82,6 +83,9 @@ gulp.task('js', ['demo-js'], function () {
 gulp.task('html', function () {
     return gulp
         .src('src/nr-structure-list.html')
+        .pipe(injectSvg({
+            base: 'src/'
+        }))
         .pipe(gulpif(dist, htmlmin({
             collapseWhitespace: true
         })))
