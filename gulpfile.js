@@ -154,6 +154,11 @@ gulp.task('vendor-css', function (cb) {
 
 /* HELPER FUNCTIONS */
 function reload(server, fileObj) {
+    var extension = path.extname(fileObj.path);
+
+    if (extension === '.css')
+        fileObj.path = path.join(__dirname, 'src');
+
     server.start.bind(server)();
     server.notify.bind(server)(fileObj);
 }
