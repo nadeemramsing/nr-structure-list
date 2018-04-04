@@ -38,7 +38,8 @@
                 layout="row"
                 layout-align="start center"
                 dnd-list="selectedColumns"
-                dnd-horizontal-list="true">
+                dnd-horizontal-list="true"
+                dnd-drop="onDrop(index, item, external, type)">
 
                 <div ng-if="vm.showCheckboxes"
                      class="checkbox-dummy">

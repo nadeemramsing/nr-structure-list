@@ -58,11 +58,16 @@
         function initColumns(columns) {
             columns = _.cloneDeep(columns);
 
-            return columns.map(function (column) {
-                return Object.assign(column, {
-                    isSelected: defaultColumns.includes(column.field)
-                });
-            });
+            return _.chain(columns)
+                .map(function (column, index) {
+                    return Object.assign(column, {
+                        isSelected: defaultColumns.includes(column.field),
+                        
+                        //setting index as order
+                        order: index
+                    });
+                })
+                .value();
         }
 
         function onColumnClick(column) {

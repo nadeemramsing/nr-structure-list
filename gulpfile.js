@@ -136,7 +136,10 @@ gulp.task('vendor-js', function (cb) {
             'bower_components/angular-aria/angular-aria.min.js',
             'bower_components/angular-messages/angular-messages.min.js',
             'bower_components/angular-material/angular-material.min.js',
-            'bower_components/nr-angular-pagination/dist/nr-angular-pagination.min.js'
+            'bower_components/nr-angular-pagination/dist/nr-angular-pagination.min.js',
+            'bower_components/angular-drag-and-drop-lists/angular-drag-and-drop-lists.min.js',
+            
+            'node_modules/array.prototype.move/src/array-prototype-move.js'
         ])
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest('dev'));
