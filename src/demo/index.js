@@ -13,15 +13,19 @@
     function DemoController($scope, $http, $httpParamSerializer, $q) {
 
         /* BINDED VAR */
+
+        //nr-structure-list
+        $scope.comments = [];
+        $scope.fields = [];
+        $scope.onColumnClick = onColumnClick;
+        $scope.onDocumentSelect = onDocumentSelect;
+
+        //nr-pagination
         $scope.paginationOptions = {
             'query': { skip: 0, limit: 5 },
             'searchText': ''
         };
-        $scope.comments = [];
-
         $scope.getCount = getCommentsCount;
-        $scope.onColumnClick = onColumnClick;
-        $scope.onDocumentSelect = onDocumentSelect;
         $scope.onLimitChange = onLimitChange;
         $scope.onPageChange = onPageChange;
 
@@ -62,7 +66,7 @@
                 .map(function (column, index) {
                     return Object.assign(column, {
                         isSelected: defaultColumns.includes(column.field),
-                        
+
                         //setting index as order
                         order: index
                     });
