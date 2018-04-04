@@ -1,31 +1,72 @@
 <div id="nr-structure-list">
-    <md-menu class="columns-menu" layout layout-align="end">
-        <div ng-click="$mdMenu.open($event)">
-            <img class="columns-filter-icon" src="assets/icons/drop.svg" height="25" width="25">
+    <div class="menu-container"
+         layout
+         layout-align="end">
+        <div ng-click="vm.showCheckboxes = !vm.showCheckboxes">
+            <img class="icon"
+                 src="assets/icons/checkbox.svg"
+                 height="40"
+                 width="40">
         </div>
-        <md-menu-content width="4">
-            <md-menu-item ng-repeat="column in vm.columns">
-                <md-button ng-click="column.isSelected = !column.isSelected; vm.onColumnClick({column: column})" md-prevent-menu-close>
-                    <md-checkbox ng-checked="column.isSelected" md-prevent-menu-close>{{column.label}}</md-checkbox>
-                </md-button>
-            </md-menu-item>
-        </md-menu-content>
-    </md-menu>
+
+        <md-menu class="columns-menu"
+                 layout
+                 layout-align="end">
+            <div ng-click="$mdMenu.open($event)">
+                <img class="icon"
+                     src="assets/icons/drop.svg"
+                     height="40"
+                     width="40">
+            </div>
+            <md-menu-content width="4">
+                <md-menu-item ng-repeat="column in vm.columns">
+                    <md-button ng-click="column.isSelected = !column.isSelected; vm.onColumnClick({column: column})"
+                               md-prevent-menu-close>
+                        <md-checkbox ng-checked="column.isSelected"
+                                     md-prevent-menu-close>
+                            {{column.label}}
+                        </md-checkbox>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
 
     <md-list>
         <md-list-item class="md-2-line header">
-            <div class="md-list-item-text" layout="row" layout-align="start center">
-                <span ng-repeat="column in vm.columns" ng-if="column.isSelected" flex>
+            <div class="md-list-item-text"
+                 layout="row"
+                 layout-align="start center">
+
+                <div ng-if="vm.showCheckboxes"
+                     class="checkbox-dummy">
+                </div>
+
+                <span ng-repeat="column in vm.columns"
+                      ng-if="column.isSelected"
+                      flex>
                     {{column.label}}
                 </span>
             </div>
         </md-list-item>
-        <md-list-item class="md-2-line row" ng-repeat="document in vm.documents">
-            <md-checkbox ng-model="document.selected" ng-change="vm.onDocumentSelect({document: document})"></md-checkbox>
-            <div class="md-list-item-text" layout="row" layout-align="start center">
-                <span ng-repeat="column in vm.columns" ng-if="column.isSelected" flex>
+        <md-list-item class="md-2-line row"
+                      ng-repeat="document in vm.documents">
+
+            <md-checkbox ng-if="vm.showCheckboxes"
+                         ng-model="document.selected"
+                         ng-change="vm.onDocumentSelect({document: document})">
+            </md-checkbox>
+
+            <div class="md-list-item-text"
+                 layout="row"
+                 layout-align="start center">
+
+                <span ng-repeat="column in vm.columns"
+                      ng-if="column.isSelected"
+                      flex>
                     {{document[column.field]}}
                 </span>
+
             </div>
         </md-list-item>
     </md-list>

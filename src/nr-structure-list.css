@@ -2,8 +2,8 @@
     opacity: 0.5;
 }
 
-#nr-structure-list .columns-filter-icon {
-    background-color: grey
+#nr-structure-list .icon {
+    background-color: grey;
 } 
 
 #nr-structure-list .header {
@@ -15,4 +15,12 @@
 
 #nr-structure-list .row:nth-child(odd) {
     background-color: #E5EAEB;
+}
+
+#nr-structure-list .checkbox-dummy {
+    height: auto;
+    width: 24;
+    margin-left: 3px;
+    margin-right: 29px;
+    margin-top: 16px;
 }
