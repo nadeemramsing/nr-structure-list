@@ -27,7 +27,9 @@ if (!dist) {
 
 gulp.task('default', function () {
     if (dist) {
-        return runSequence('build');
+        return runSequence('build', function () {
+            process.exit();
+        });
     } else {
         return runSequence('build', 'watch', function () {
             reload(server, {
@@ -46,8 +48,8 @@ gulp.task('watch', function () {
     });
 });
 
-gulp.task('build', ['index', 'cleanup', 'vendor-js', 'vendor-css'], function () {
-
+gulp.task('build', ['index', 'cleanup', 'vendor-js', 'vendor-css'], function (done) {
+    done();
 });
 
 gulp.task('index', function (cb) {
