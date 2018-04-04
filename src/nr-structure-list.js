@@ -8,7 +8,8 @@
             bindings: {
                 documents: '<',
                 columns: '<',
-                onColumnClick: '&'
+                onColumnClick: '&',
+                onDocumentSelect: '&'
             },
             templateUrl: 'tpl/nr-structure-list.html',
             controller: StructureListController,
@@ -19,7 +20,7 @@
         var vm = this;
 
         this.$onInit = function () {
-            
+
         }
     }
 

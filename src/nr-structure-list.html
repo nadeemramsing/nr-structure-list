@@ -21,6 +21,7 @@
             </div>
         </md-list-item>
         <md-list-item class="md-2-line row" ng-repeat="document in vm.documents">
+            <md-checkbox ng-model="document.selected" ng-change="vm.onDocumentSelect({document: document})"></md-checkbox>
             <div class="md-list-item-text" layout="row" layout-align="start center">
                 <span ng-repeat="column in vm.columns" ng-if="column.isSelected" flex>
                     {{document[column.field]}}

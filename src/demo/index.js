@@ -21,6 +21,7 @@
 
         $scope.getCount = getCommentsCount;
         $scope.onColumnClick = onColumnClick;
+        $scope.onDocumentSelect = onDocumentSelect;
         $scope.onLimitChange = onLimitChange;
         $scope.onPageChange = onPageChange;
 
@@ -57,7 +58,7 @@
         function initColumns(columns) {
             columns = _.cloneDeep(columns);
 
-            return columns.map(function(column) {
+            return columns.map(function (column) {
                 return Object.assign(column, {
                     isSelected: defaultColumns.includes(column.field)
                 });
@@ -65,11 +66,16 @@
         }
 
         function onColumnClick(column) {
-            console.log("onColumnClick, column = ", column);
+            console.log("onColumnClick, column: ", column);
+        }
+
+        function onDocumentSelect(document) {
+            console.log("onDocumentSelect, document: ", document);
+            console.log("$scope.comments:", $scope.comments);
         }
 
         function onLimitChange(limit) {
-            console.log("onLimitChange, limit = ", limit);
+            console.log("onLimitChange, limit: ", limit);
         }
 
         function onPageChange(options) {
