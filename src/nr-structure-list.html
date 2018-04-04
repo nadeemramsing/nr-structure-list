@@ -20,7 +20,7 @@
             </div>
             <md-menu-content width="4">
                 <md-menu-item ng-repeat="column in vm.columns">
-                    <md-button ng-click="column.isSelected = !column.isSelected; vm.onColumnClick({column: column})"
+                    <md-button ng-click="column.isSelected = !column.isSelected; onColumnClick(column)"
                                md-prevent-menu-close>
                         <md-checkbox ng-checked="column.isSelected"
                                      md-prevent-menu-close>
@@ -34,20 +34,24 @@
 
     <md-list>
         <md-list-item class="md-2-line header">
-            <div class="md-list-item-text"
-                 layout="row"
-                 layout-align="start center">
+            <ul class="md-list-item-text"
+                layout="row"
+                layout-align="start center"
+                dnd-list="selectedColumns"
+                dnd-horizontal-list="true">
 
                 <div ng-if="vm.showCheckboxes"
                      class="checkbox-dummy">
                 </div>
 
-                <span ng-repeat="column in vm.columns"
-                      ng-if="column.isSelected"
-                      flex>
-                    {{column.label}}
-                </span>
-            </div>
+                <li ng-repeat="column in selectedColumns"
+                    ng-if="column.isSelected"
+                    dnd-draggable="column"
+                    dnd-moved="selectedColumns.splice($index, 1)"
+                    flex>
+                    {{column.label}} {{$index}}
+                </li>
+            </ul>
         </md-list-item>
         <md-list-item class="md-2-line row"
                       ng-repeat="document in vm.documents">
@@ -61,7 +65,7 @@
                  layout="row"
                  layout-align="start center">
 
-                <span ng-repeat="column in vm.columns"
+                <span ng-repeat="column in selectedColumns"
                       ng-if="column.isSelected"
                       flex>
                     {{document[column.field]}}

@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "nr-angular-pagination": "~0.0.1"
+    "nr-angular-pagination": "~0.0.1",
+    "angular-drag-and-drop-lists": "^2.1.0"
   }
 }
