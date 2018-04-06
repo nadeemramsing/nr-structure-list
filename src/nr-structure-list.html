@@ -23,7 +23,8 @@
                     <md-button ng-click="column.isSelected = !column.isSelected; onColumnClick(column)"
                                md-prevent-menu-close>
                         <md-checkbox ng-checked="column.isSelected"
-                                     md-prevent-menu-close>
+                                     md-prevent-menu-close
+                                     aria-label="{{column.field}} checkbox">
                             {{column.label}}
                         </md-checkbox>
                     </md-button>
@@ -59,7 +60,8 @@
 
             <md-checkbox ng-if="vm.showCheckboxes"
                          ng-model="document.selected"
-                         ng-change="vm.onDocumentSelect({document: document})">
+                         ng-change="vm.onDocumentSelect({document: document})"
+                         aria-label="{{document.$$hashKey}} checkbox">
             </md-checkbox>
 
             <div class="md-list-item-text"
